@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | PRDS Nepal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <style>
+        body { background: #f0f2f5; padding: 1rem; font-family: 'Mukta', sans-serif; }
+        .login-container { max-width: 400px; margin: 100px auto; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); text-align: center; }
+        .admin-container { max-width: 1200px; margin: 0 auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: none; }
+        .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; }
+        .tab-menu { display: flex; gap: 0.5rem; margin-bottom: 2rem; border-bottom: 1px solid #eee; flex-wrap: wrap; background: #f8f9fa; padding: 0.5rem; border-radius: 8px; }
+        .tab-btn { padding: 0.5rem 1rem; cursor: pointer; border: none; background: none; font-weight: 600; color: #667; border-radius: 4px; font-size: 0.9rem; }
+        .tab-btn:hover { background: #e9ecef; }
+        .tab-btn.active { background: var(--accent-color); color: white; }
+        .tab-content { display: none; border: 1px solid #eee; padding: 1.5rem; border-radius: 8px; }
+        .tab-content.active { display: block; }
+        .form-group { margin-bottom: 1.5rem; }
+        label { display: block; margin-bottom: 0.5rem; font-weight: 700; color: var(--primary-color); }
+        input, textarea { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem; }
+        .btn-save { background: var(--accent-color); color: white; border: none; padding: 1rem 2rem; border-radius: 50px; font-weight: 800; cursor: pointer; transition: var(--transition); }
+        .btn-save:hover { transform: scale(1.05); }
+        .btn-export { background: var(--primary-color); margin-left: 1rem; }
+        .export-area { display: none; margin-top: 2rem; background: #2d3436; color: #dfe6e9; padding: 1.5rem; border-radius: 8px; position: relative; }
+        .export-area pre { white-space: pre-wrap; word-break: break-all; font-family: monospace; font-size: 0.8rem; height: 300px; overflow-y: scroll; }
+        .list-item { display: flex; gap: 1rem; margin-bottom: 1rem; align-items: flex-start; background: #f9f9f9; padding: 1rem; border-radius: 8px; border: 1px solid #eee; }
+        .remove-btn { color: #e74c3c; cursor: pointer; font-weight: 800; font-size: 1.2rem; margin-top: 10px; }
+        .add-btn { background: #2ecc71; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 50px; font-weight: 700; cursor: pointer; margin-top: 1rem; }
+        .html-editor { background: #fcf6e5; border-color: #f1c40f; color: #7f8c8d; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+        <h2 style="margin-bottom: 1.5rem; color: var(--primary-color);">Admin Login</h2>
+        <div class="form-group">
+            <input type="email" id="email" placeholder="Email (purchoundirujkot@gmail.com)">
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button class="btn btn-primary" onclick="checkLogin()" style="width: 100%;">Login</button>
+        <p id="loginError" style="color: red; margin-top: 1rem; display: none;">Invalid Credentials!</p>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="adminPanel" class="admin-container">
+        <div class="admin-header">
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p style="color: var(--text-muted);">Manage every section of your website.</p>
+            </div>
+            <div>
+                <button class="btn" style="background: #95a5a6; color: white;" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="tab-menu" id="tabMenu">
+            <button class="tab-btn active" onclick="showTab('general', event)">General</button>
+            <button class="tab-btn" onclick="showTab('home', event)">Home</button>
+            <button class="tab-btn" onclick="showTab('about', event)">About</button>
+            <button class="tab-btn" onclick="showTab('programs', event)">Programs</button>
+            <button class="tab-btn" onclick="showTab('membership', event)">Membership</button>
+            <button class="tab-btn" onclick="showTab('scholarship', event)">Scholarship</button>
+            <button class="tab-btn" onclick="showTab('committee', event)">Committee</button>
+            <button class="tab-btn" onclick="showTab('activities', event)">Activities</button>
+            <button class="tab-btn" onclick="showTab('gallery', event)">Gallery</button>
+            <button class="tab-btn" onclick="showTab('reports', event)">Reports</button>
+            <button class="tab-btn" onclick="showTab('contact', event)">Contact</button>
+            <button class="tab-btn" onclick="showTab('donations', event)">Donations</button>
+        </div>
+
+        <form id="adminForm">
+            <!-- General Settings -->
+            <div id="general" class="tab-content active">
+                <div class="form-group">
+                    <label>Organization Name</label>
+                    <input type="text" name="settings.siteName">
+                </div>
+                <div class="form-group">
+                    <label>Sub-heading / Location</label>
+                    <input type="text" name="settings.siteSubName">
+                </div>
+                <div class="form-group">
+                    <label>Footer Description</label>
+                    <textarea name="settings.footerText" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Copyright Text</label>
+                    <input type="text" name="settings.copyright">
+                </div>
+                <div class="form-group">
+                    <label>Custom Global HTML (Header/Head)</label>
+                    <textarea name="settings.customGlobalHTML" rows="4" class="html-editor" placeholder="<script>...</script>"></textarea>
+                </div>
+            </div>
+
+            <!-- Home Page -->
+            <div id="home" class="tab-content">
+                <div class="form-group">
+                    <label>Hero Heading</label>
+                    <input type="text" name="index.heroTitle">
+                </div>
+                <div class="form-group">
+                    <label>Hero Subtitle</label>
+                    <textarea name="index.heroSubtitle" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>About Summary Title</label>
+                    <input type="text" name="index.aboutSummaryTitle">
+                </div>
+                <div class="form-group">
+                    <label>About Summary Content</label>
+                    <textarea name="index.aboutSummaryText" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML for Home Page</label>
+                    <textarea name="index.customHTML" rows="4" class="html-editor" placeholder="<div class='custom'>...</div>"></textarea>
+                </div>
+            </div>
+
+            <!-- About Page -->
+            <div id="about" class="tab-content">
+                <div class="form-group">
+                    <label>Banner Title</label>
+                    <input type="text" name="about.pageTitle">
+                </div>
+                <div class="form-group">
+                    <label>History Title</label>
+                    <input type="text" name="about.historyTitle">
+                </div>
+                <div class="form-group">
+                    <label>History Content</label>
+                    <textarea name="about.historyText" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Vision Text</label>
+                    <textarea name="about.visionText" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Mission Text</label>
+                    <textarea name="about.missionText" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML for About Page</label>
+                    <textarea name="about.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Programs -->
+            <div id="programs" class="tab-content">
+                <div class="form-group">
+                    <label>Programs Title</label>
+                    <input type="text" name="programs.title">
+                </div>
+                <div class="form-group">
+                    <label>General Content</label>
+                    <textarea name="programs.content" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="programs.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Membership -->
+            <div id="membership" class="tab-content">
+                <div class="form-group">
+                    <label>Membership Title</label>
+                    <input type="text" name="membership.title">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="membership.content" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="membership.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Scholarship -->
+            <div id="scholarship" class="tab-content">
+                <div class="form-group">
+                    <label>Scholarship Title</label>
+                    <input type="text" name="scholarship.title">
+                </div>
+                <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="scholarship.content" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="scholarship.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Committee -->
+            <div id="committee" class="tab-content">
+                <div id="committee-list-editor"></div>
+                <button type="button" class="add-btn" onclick="addCommitteeItem()">+ Add Member</button>
+            </div>
+
+            <!-- Activities -->
+            <div id="activities" class="tab-content">
+                <div id="activities-list-editor"></div>
+                <button type="button" class="add-btn" onclick="addActivityItem()">+ Add Activity</button>
+            </div>
+
+            <!-- Gallery -->
+            <div id="gallery" class="tab-content">
+                <div class="form-group">
+                    <label>Gallery Title</label>
+                    <input type="text" name="gallery.title">
+                </div>
+                <div id="gallery-list-editor"></div>
+                <button type="button" class="add-btn" onclick="addGalleryItem()">+ Add Image</button>
+                <div class="form-group" style="margin-top: 2rem;">
+                    <label>Custom HTML</label>
+                    <textarea name="gallery.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Reports -->
+            <div id="reports" class="tab-content">
+                <div class="form-group">
+                    <label>Reports Title</label>
+                    <input type="text" name="reports.title">
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="reports.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div id="contact" class="tab-content">
+                <div class="form-group">
+                    <label>Contact Title</label>
+                    <input type="text" name="contact.title">
+                </div>
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" name="contact.address">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" name="contact.phone">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="contact.email">
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="contact.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <!-- Donations -->
+            <div id="donations" class="tab-content">
+                <div class="form-group">
+                    <label>Donations Title</label>
+                    <input type="text" name="donations.title">
+                </div>
+                <div class="form-group">
+                    <label>Bank Name</label>
+                    <input type="text" name="donations.bankName">
+                </div>
+                <div class="form-group">
+                    <label>Account Name</label>
+                    <input type="text" name="donations.accountName">
+                </div>
+                <div class="form-group">
+                    <label>Account Number</label>
+                    <input type="text" name="donations.accountNumber">
+                </div>
+                <div class="form-group">
+                    <label>Branch</label>
+                    <input type="text" name="donations.branch">
+                </div>
+                <div class="form-group">
+                    <label>Custom HTML</label>
+                    <textarea name="donations.customHTML" rows="4" class="html-editor"></textarea>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; border-top: 2px solid #eee; padding-top: 2rem;">
+                <button type="button" class="btn-save" onclick="saveData()">Save & Preview</button>
+                <button type="button" class="btn-save btn-export" onclick="showExport()">Generate Data File</button>
+                <a href="index.html" style="margin-left: 1.5rem; color: var(--accent-color); font-weight: 800;">Back to Site</a>
+            </div>
+        </form>
+
+        <div id="exportArea" class="export-area">
+            <button class="copy-btn" style="background: #0984e3;" onclick="copyExport()">Copy Code</button>
+            <p style="margin-bottom: 1rem; color: #fab1a0; font-weight: 700;">Copy this code and replace everything in js/data.js:</p>
+            <pre id="exportCode"></pre>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_EMAIL = "purchoundirujkot@gmail.com";
+        const ADMIN_PASS_HASH = "e474b5d32b14197096d500e10d9e1569d938c5d2594fbf9a0c400a697529054c";
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function checkLogin() {
+            const enteredPass = document.getElementById('password').value;
+            const enteredHash = await sha256(enteredPass);
+            
+            if (document.getElementById('email').value === ADMIN_EMAIL && enteredHash === ADMIN_PASS_HASH) {
+                sessionStorage.setItem('prds_admin', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            populateForm();
+        }
+
+        function logout() {
+            sessionStorage.removeItem('prds_admin');
+            location.reload();
+        }
+
+        if (sessionStorage.getItem('prds_admin') === 'true') {
+            window.onload = showDashboard;
+        }
+
+        const data = window.siteData;
+
+        function showTab(id, event) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (event) event.target.classList.add('active');
+        }
+
+        function populateForm() {
+            if (!data) return;
+            document.querySelectorAll('#adminForm input[name], #adminForm textarea[name]').forEach(el => {
+                const path = el.name.split('.');
+                let val = data;
+                for(const key of path) val = val ? val[key] : '';
+                el.value = val || '';
+            });
+            renderCommitteeEditor();
+            renderActivitiesEditor();
+            renderGalleryEditor();
+        }
+
+        function renderCommitteeEditor() {
+            const container = document.getElementById('committee-list-editor');
+            container.innerHTML = `<h3>Committee Members</h3>` + data.committee.map((m, i) => `
+                <div class="list-item">
+                    <input type="text" value="${m.name}" onchange="data.committee[${i}].name=this.value">
+                    <input type="text" value="${m.post}" onchange="data.committee[${i}].post=this.value">
+                    <span class="remove-btn" onclick="removeItem('committee', ${i}, renderCommitteeEditor)">✕</span>
+                </div>
+            `).join('');
+        }
+
+        function renderActivitiesEditor() {
+            const container = document.getElementById('activities-list-editor');
+            container.innerHTML = `<h3>Activities</h3>` + data.activities.map((a, i) => `
+                <div class="list-item" style="flex-direction: column;">
+                    <div style="display:flex; width:100%; gap:10px; margin-bottom:10px;">
+                        <input type="text" value="${a.title}" onchange="data.activities[${i}].title=this.value">
+                        <span class="remove-btn" onclick="removeItem('activities', ${i}, renderActivitiesEditor)">✕</span>
+                    </div>
+                    <textarea rows="2" onchange="data.activities[${i}].description=this.value">${a.description}</textarea>
+                    <input type="text" placeholder="Image path" value="${a.image}" onchange="data.activities[${i}].image=this.value" style="margin-top:10px; font-size:0.8rem;">
+                </div>
+            `).join('');
+        }
+
+        function renderGalleryEditor() {
+            const container = document.getElementById('gallery-list-editor');
+            container.innerHTML = `<h3>Gallery Images</h3>` + data.gallery.images.map((img, i) => `
+                <div class="list-item">
+                    <input type="text" placeholder="Image URL/Path" value="${img.url}" onchange="data.gallery.images[${i}].url=this.value">
+                    <input type="text" placeholder="Caption" value="${img.caption}" onchange="data.gallery.images[${i}].caption=this.value">
+                    <span class="remove-btn" onclick="removeItem('gallery.images', ${i}, renderGalleryEditor)">✕</span>
+                </div>
+            `).join('');
+        }
+
+        function removeItem(path, index, callback) {
+            const keys = path.split('.');
+            let target = data;
+            for(let i=0; i<keys.length-1; i++) target = target[keys[i]];
+            target[keys[keys.length-1]].splice(index, 1);
+            callback();
+        }
+
+        function addCommitteeItem() { data.committee.push({name:'', post:''}); renderCommitteeEditor(); }
+        function addActivityItem() { data.activities.push({date:'', title:'', description:'', image:'images/activity-1.jpg'}); renderActivitiesEditor(); }
+        function addGalleryItem() { data.gallery.images.push({url:'', caption:''}); renderGalleryEditor(); }
+
+        function saveData() {
+            document.querySelectorAll('#adminForm input[name], #adminForm textarea[name]').forEach(el => {
+                const path = el.name.split('.');
+                if(path.length === 2) data[path[0]][path[1]] = el.value;
+                else if(path.length === 1) data[path[0]] = el.value;
+            });
+            localStorage.setItem('prds_site_data', JSON.stringify(data));
+            alert('Preview saved! Refresh site pages to see changes.');
+        }
+
+        function showExport() {
+            saveData();
+            document.getElementById('exportCode').innerText = `// Central Site Content\nconst initialSiteData = ${JSON.stringify(data, null, 4)};\n\nconst siteData = JSON.parse(localStorage.getItem('prds_site_data')) || initialSiteData;\nwindow.siteData = siteData;`;
+            document.getElementById('exportArea').style.display = 'block';
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function copyExport() {
+            navigator.clipboard.writeText(document.getElementById('exportCode').innerText).then(() => alert('Copied!'));
+        }
+    </script>
+</body>
+</html>

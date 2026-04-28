@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>पुरचौंडी रुजकोट विकास समाज-नेपाल | Home</title>
+    <meta name="description" content="पुरचौंडी रुजकोट क्षेत्रको चौतर्फी विकासका लागि काम गर्ने गैर-नाफामुखी संस्था।">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Site Data -->
+    <script src="js/data.js"></script>
+    
+    <!-- Font Awesome (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="index.html" class="logo-container">
+                        <img src="images/logo.png" alt="PRDS Nepal Logo">
+                        <div class="logo-text">
+                            <h1 data-content="settings.siteName">पुरचौंडी रुजकोट विकास समाज-नेपाल</h1>
+                            <p data-content="settings.siteSubName"></p>
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="Pages/about.html">संस्थाको बारेमा</a></li>
+                    <li><a href="Pages/programs.html">योजना र कार्यक्रमहरू</a></li>
+                    <li><a href="Pages/membership.html">सदस्यता</a></li>
+                    <li><a href="Pages/scholarship.html">छात्रवृत्ति</a></li>
+                    <li><a href="Pages/donations.html">चन्दा सहयोग</a></li>
+                    <li><a href="Pages/committee.html">कार्यसमिति र सदस्यहरू</a></li>
+                    <li><a href="Pages/activities.html">क्रियाकलापहरू</a></li>
+                    <li><a href="Pages/gallery.html">फोटो ग्यालरी</a></li>
+                    <li><a href="Pages/reports.html">प्रकाशन एवं रिपोर्टहरू</a></li>
+                    <li><a href="Pages/contact.html">सम्पर्क</a></li>
+                </ul>
+                <div class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-content="index.heroTitle">पुरचौंडी रुजकोट विकास समाज-नेपालमा स्वागत छ</h1>
+                <p data-content="index.heroSubtitle">रुजकोट क्षेत्रको चौतर्फी विकास र समृद्धिका लागि समर्पित एक गैर-नाफामुखी संस्था।</p>
+                <div class="hero-btns">
+                    <a href="Pages/about.html" class="btn btn-primary">हाम्रो बारेमा जान्नुहोस्</a>
+                    <a href="Pages/donations.html" class="btn btn-outline" style="background: white; margin-left: 10px;">सहयोग गर्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info Cards -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="card-grid">
+                <!-- Card 1 -->
+                <div class="card">
+                    <div class="card-body text-center" style="text-align: center;">
+                        <i class="fas fa-users" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>सदस्यता</h3>
+                        <p>हाम्रो समाजको सदस्य बन्नुहोस् र विकासमा सहभागी हुनुहोस्।</p>
+                        <a href="Pages/membership.html" class="btn btn-outline" style="margin-top: 1rem;">यहाँ जानुहोस्</a>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="card">
+                    <div class="card-body text-center" style="text-align: center;">
+                        <i class="fas fa-hand-holding-heart" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>चन्दा सहयोग</h3>
+                        <p>तपाईंको सहयोगले ठूलो परिवर्तन ल्याउन सक्छ।</p>
+                        <a href="Pages/donations.html" class="btn btn-outline" style="margin-top: 1rem;">यहाँ जानुहोस्</a>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="card">
+                    <div class="card-body text-center" style="text-align: center;">
+                        <i class="fas fa-graduation-cap" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h3>छात्रवृति</h3>
+                        <p>प्रतिभाशाली विद्यार्थीहरूलाई सहयोग गर्नुहोस्।</p>
+                        <a href="Pages/scholarship.html" class="btn btn-outline" style="margin-top: 1rem;">यहाँ जानुहोस्</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Summary Section -->
+    <section class="about-summary" style="background: white;">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="images/about-summary.jpg" alt="About Us" style="border-radius: var(--radius); box-shadow: var(--shadow-lg);">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 data-content="index.aboutSummaryTitle" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1.5rem;">हाम्रो बारेमा</h2>
+                    <p data-content="index.aboutSummaryText" style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                        पुरचौंडी रुजकोट विकास समाज-नेपाल (PRDS-Nepal) एक गैर-नाफामुखी, गैर-राजनीतिक र सामाजिक संस्था हो। यसको स्थापना रुजकोट क्षेत्रको चौतर्फी विकास गर्ने उद्देश्यले गरिएको हो। हामी शिक्षा, स्वास्थ्य, वातावरण, र सामाजिक-आर्थिक विकासका क्षेत्रमा काम गर्दछौं।
+                    </p>
+                    <a href="Pages/about.html" class="btn btn-primary">थप पढ्नुहोस्</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Activities Section -->
+    <section class="activities">
+        <div class="container">
+            <div class="section-title">
+                <h2>भर्खरका गतिविधिहरू</h2>
+            </div>
+            <div class="card-grid" id="activities-render-grid">
+                <!-- Activities will be rendered here from data.js -->
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="Pages/activities.html" class="btn btn-outline">सबै गतिविधिहरू हेर्नुहोस्</a>
+            </div>
+            <!-- Custom HTML Section -->
+            <div data-html="index.customHTML" style="margin-top: 4rem;"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 data-content="settings.siteName">पुरचौंडी रुजकोट</h4>
+                    <p data-content="settings.siteSubName" style="opacity: 0.8;">रुजकोट क्षेत्रको चौतर्फी विकासका लागि समर्पित एक सामाजिक संस्था।</p>
+                </div>
+                <div class="footer-col">
+                    <h4>लिङ्कहरू</h4>
+                    <ul class="footer-links">
+                        <li><a href="Pages/about.html">संस्थाको बारेमा</a></li>
+                        <li><a href="Pages/committee.html">कार्यसमिति र सदस्यहरू</a></li>
+                        <li><a href="Pages/activities.html">क्रियाकलापहरू</a></li>
+                        <li><a href="Pages/contact.html">सम्पर्क</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>सम्पर्क</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-location-dot"></i> पुरचौंडी, बैतडी, नेपाल</li>
+                        <li><i class="fas fa-phone"></i> +९७७-९८XXXXXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@purchoundirujkot.org.np</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-content="settings.copyright">&copy; २०८० पुरचौंडी रुजकोट विकास समाज-नेपाल। सर्वाधिकार सुरक्षित।</p>
+                <div style="margin-top: 1rem;">
+                    <a href="admin.html" style="color: rgba(255,255,255,0.4); font-size: 0.8rem; text-decoration: underline;">Admin Login</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
