@@ -290,15 +290,39 @@
             </div>
 
             <div style="margin-top: 3rem; border-top: 2px solid #eee; padding-top: 2rem;">
-                <button type="button" class="btn-save" onclick="saveData()">Save & Preview</button>
-                <button type="button" class="btn-save btn-export" onclick="showExport()">Generate Data File</button>
-                <a href="index.html" style="margin-left: 1.5rem; color: var(--accent-color); font-weight: 800;">Back to Site</a>
+                <button type="button" class="btn-save btn-export" onclick="showExport()" style="background: var(--primary-color); padding: 1.2rem 2.5rem; font-size: 1.1rem;">Generate Data File (Final Step)</button>
+                <button type="button" class="btn-save" onclick="saveData()" style="margin-left: 1rem; background: #95a5a6;">Save Local Preview</button>
+                <a href="index.html" target="_blank" style="margin-left: 1.5rem; color: var(--accent-color); font-weight: 800;">View Website</a>
             </div>
+            <div id="saveMessage" style="margin-top: 1rem; color: #27ae60; font-weight: 700; display: none;">Changes saved to local preview!</div>
         </form>
 
         <div id="exportArea" class="export-area">
-            <button class="copy-btn" style="background: #0984e3;" onclick="copyExport()">Copy Code</button>
-            <p style="margin-bottom: 1rem; color: #fab1a0; font-weight: 700;">Copy this code and replace everything in js/data.js:</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="color: white; margin: 0;">Data Export</h3>
+                <button class="copy-btn" style="background: #0984e3; padding: 0.5rem 1rem;" onclick="copyExport()">Copy Code</button>
+            </div>
+            
+            <div style="margin-bottom: 1rem;">
+                <label style="color: #aaa; font-size: 0.8rem;">Export Type:</label>
+                <select id="exportType" onchange="showExport()" style="width: auto; padding: 0.3rem; margin-left: 0.5rem;">
+                    <option value="all">Full Site Data (js/data.js)</option>
+                    <option value="general">General Settings Only</option>
+                    <option value="home">Home Page Data</option>
+                    <option value="about">About Page Data</option>
+                    <option value="programs">Programs Data</option>
+                    <option value="membership">Membership Data</option>
+                    <option value="scholarship">Scholarship Data</option>
+                    <option value="committee">Committee Data</option>
+                    <option value="activities">Activities Data</option>
+                    <option value="gallery">Gallery Data</option>
+                    <option value="reports">Reports Data</option>
+                    <option value="contact">Contact Data</option>
+                    <option value="donations">Donations Data</option>
+                </select>
+            </div>
+
+            <p id="exportInstruction" style="margin-bottom: 1rem; color: #fab1a0; font-weight: 700;">Copy this code and replace everything in js/data.js:</p>
             <pre id="exportCode"></pre>
         </div>
     </div>
@@ -418,12 +442,33 @@
                 else if(path.length === 1) data[path[0]] = el.value;
             });
             localStorage.setItem('prds_site_data', JSON.stringify(data));
-            alert('Preview saved! Refresh site pages to see changes.');
+            const msg = document.getElementById('saveMessage');
+            msg.style.display = 'block';
+            setTimeout(() => msg.style.display = 'none', 3000);
         }
 
         function showExport() {
             saveData();
-            document.getElementById('exportCode').innerText = `// Central Site Content\nconst initialSiteData = ${JSON.stringify(data, null, 4)};\n\nconst siteData = JSON.parse(localStorage.getItem('prds_site_data')) || initialSiteData;\nwindow.siteData = siteData;`;
+            const type = document.getElementById('exportType').value;
+            let exportData = data;
+            let fileName = 'js/data.js';
+            let varName = 'siteData';
+            
+            if (type !== 'all') {
+                const section = type === 'general' ? 'settings' : (type === 'home' ? 'index' : type);
+                exportData = data[section];
+                fileName = `js/data/${type}.js`;
+                varName = `${type}Data`;
+                document.getElementById('exportInstruction').innerText = `Copy this code for your ${type} data file:`;
+            } else {
+                document.getElementById('exportInstruction').innerText = `Copy this code and replace everything in js/data.js:`;
+            }
+
+            const code = type === 'all' 
+                ? `// Central Site Content\nconst initialSiteData = ${JSON.stringify(data, null, 4)};\n\nconst siteData = JSON.parse(localStorage.getItem('prds_site_data')) || initialSiteData;\nwindow.siteData = siteData;`
+                : `// ${type} Data\nwindow.siteData = window.siteData || {};\nwindow.siteData.${type === 'general' ? 'settings' : (type === 'home' ? 'index' : type)} = ${JSON.stringify(exportData, null, 4)};`;
+            
+            document.getElementById('exportCode').innerText = code;
             document.getElementById('exportArea').style.display = 'block';
             window.scrollTo(0, document.body.scrollHeight);
         }
