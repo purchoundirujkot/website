@@ -18,6 +18,54 @@ function toggleMenu() {
     }
 }
 
+// Date Parsing Utility for Nepali Dates
+function parseNepaliDateToComparable(dateStr) {
+    if (!dateStr) return 0;
+    
+    const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+    const monthMap = {
+        'बैशाख': '01', 'बैसाख': '01',
+        'जेठ': '02', 'जेष्ठ': '02',
+        'असार': '03', 'आषाढ': '03',
+        'साउन': '04', 'श्रावण': '04',
+        'भदौ': '05', 'भाद्र': '05',
+        'असोज': '06', 'आश्विन': '06',
+        'कात्तिक': '07', 'कार्तिक': '07',
+        'मंसिर': '08', 'मार्ग': '08',
+        'पुष': '09', 'पौष': '09',
+        'माघ': '10',
+        'फागुन': '11', 'फाल्गुन': '11',
+        'चैत': '12', 'चैत्र': '12'
+    };
+
+    // Convert digits to English
+    let normalized = dateStr.replace(/[०-९]/g, d => nepaliDigits.indexOf(d));
+    
+    // Replace month names if they exist
+    for (const [name, num] of Object.entries(monthMap)) {
+        if (normalized.includes(name)) {
+            normalized = normalized.replace(name, '-' + num + '-');
+            break;
+        }
+    }
+
+    // Extract parts (Year, Month, Day)
+    const parts = normalized.split(/[-/.\s]+/).filter(p => p.trim() !== '');
+    
+    let year = parts[0] || '0000';
+    let month = parts[1] || '00';
+    let day = parts[2] || '00';
+
+    // Ensure year is 4 digits (handle cases like "79/80")
+    if (year.length === 2) year = '20' + year;
+
+    // Normalize padding for consistent comparison
+    month = month.padStart(2, '0');
+    day = day.padStart(2, '0');
+
+    return parseInt(year + month + day);
+}
+
 // Content Management System - Rendering Logic
 function loadContent() {
     if (!window.siteData) return;
@@ -107,7 +155,15 @@ function loadContent() {
     const activitiesContainer = document.getElementById('activities-render-grid');
     if (activitiesContainer && data.activities) {
         const isInsidePages = window.location.pathname.includes('/Pages/');
-        activitiesContainer.innerHTML = data.activities.map(act => {
+        
+        // Sort activities: most recent first
+        const sortedActivities = [...data.activities].sort((a, b) => {
+            const dateA = parseNepaliDateToComparable(a.date);
+            const dateB = parseNepaliDateToComparable(b.date);
+            return dateB - dateA;
+        });
+
+        activitiesContainer.innerHTML = sortedActivities.map(act => {
             const images = act.images || [act.image];
             const imagesHtml = images.map(img => {
                 const imgPath = isInsidePages ? `../${img}` : img;
