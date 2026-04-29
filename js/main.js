@@ -24,6 +24,17 @@ function loadContent() {
 
     const data = window.siteData;
 
+    // Set Random Hero Background on Home Page
+    const heroSection = document.querySelector('.hero');
+    if (heroSection && data.gallery && data.gallery.images) {
+        const randomImg = data.gallery.images[Math.floor(Math.random() * data.gallery.images.length)];
+        if (randomImg && randomImg.url) {
+            const isInsidePages = window.location.pathname.includes('/Pages/');
+            const imgPath = isInsidePages ? `../${randomImg.url}` : randomImg.url;
+            heroSection.style.backgroundImage = `linear-gradient(rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.7)), url('${imgPath}')`;
+        }
+    }
+
     // Fill simple text elements
     document.querySelectorAll('[data-content]').forEach(el => {
         const keyPath = el.getAttribute('data-content').split('.');
@@ -31,7 +42,14 @@ function loadContent() {
         for (const key of keyPath) {
             value = value ? value[key] : null;
         }
-        if (value !== null && value !== undefined) el.innerText = value;
+        if (value !== null && value !== undefined) {
+            // Auto-detect year for copyright or other fields
+            const currentYear = new Date().getFullYear();
+            if (typeof value === 'string') {
+                value = value.replace('{year}', currentYear);
+            }
+            el.innerText = value;
+        }
     });
 
     // Fill HTML elements
@@ -46,7 +64,9 @@ function loadContent() {
 
     // Render Committee List
     const committeeContainer = document.getElementById('committee-render-list');
-    const committeePreviousContainer = document.getElementById('committee-previous-render-list');
+    const committeeSecondContainer = document.getElementById('committee-second-render-list');
+    const committeeFirstContainer = document.getElementById('committee-first-render-list');
+    const allMembersLinkContainer = document.getElementById('committee-all-members-link');
     
     if (committeeContainer && data.committee && data.committee.current) {
         committeeContainer.innerHTML = data.committee.current.map(member => `
@@ -57,13 +77,30 @@ function loadContent() {
         `).join('');
     }
     
-    if (committeePreviousContainer && data.committee && data.committee.previous) {
-        committeePreviousContainer.innerHTML = data.committee.previous.map(member => `
+    if (committeeSecondContainer && data.committee && data.committee.second) {
+        committeeSecondContainer.innerHTML = data.committee.second.map(member => `
             <div class="committee-item">
                 <span class="committee-name">${member.name}</span>
                 <span class="committee-post">${member.post}</span>
             </div>
         `).join('');
+    }
+
+    if (committeeFirstContainer && data.committee && data.committee.first) {
+        committeeFirstContainer.innerHTML = data.committee.first.map(member => `
+            <div class="committee-item">
+                <span class="committee-name">${member.name}</span>
+                <span class="committee-post">${member.post}</span>
+            </div>
+        `).join('');
+    }
+
+    if (allMembersLinkContainer && data.committee && data.committee.allMembersLink) {
+        allMembersLinkContainer.innerHTML = `
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="${data.committee.allMembersLink}" target="_blank" class="btn btn-outline">संस्थाका सदस्यहरूको नामावली यहाँ हेर्नुहोस्</a>
+            </div>
+        `;
     }
 
     // Render Activities List
@@ -77,6 +114,14 @@ function loadContent() {
                 return `<div class="card-img" style="background-image: url('${imgPath}'); margin-bottom: 5px;"></div>`;
             }).join('');
 
+            const albumBtn = act.albumLink ? `
+                <div style="margin-top: 1rem;">
+                    <a href="${act.albumLink}" target="_blank" class="btn btn-outline" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                        <i class="fas fa-images"></i> थप फोटोहरू हेर्नुहोस्
+                    </a>
+                </div>
+            ` : '';
+
             return `
                 <div class="card">
                     <div class="activity-gallery">
@@ -86,6 +131,7 @@ function loadContent() {
                         <p style="color: var(--text-muted); font-size: 0.9rem;">${act.date}</p>
                         <h3>${act.title}</h3>
                         <p>${act.description}</p>
+                        ${albumBtn}
                     </div>
                 </div>
             `;
@@ -120,17 +166,42 @@ function loadContent() {
         }).join('');
     }
 
+    // Render Reports List
+    const reportsContainer = document.getElementById('reports-render-list');
+    if (reportsContainer && data.reports && data.reports.list) {
+        reportsContainer.innerHTML = data.reports.list.map(report => `
+            <div class="card" style="margin-bottom: 1rem;">
+                <div class="card-body" style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-file-pdf" style="font-size: 2rem; color: #e74c3c;"></i>
+                        <h3 style="margin: 0; font-size: 1.1rem;">${report.name}</h3>
+                    </div>
+                    <a href="${report.url}" target="_blank" class="btn btn-outline" style="padding: 0.5rem 1rem;">हेर्नुहोस्</a>
+                </div>
+            </div>
+        `).join('');
+    }
+
     // Render Gallery
     const galleryContainer = document.getElementById('gallery-render-grid');
     if (galleryContainer && data.gallery && data.gallery.images) {
         const isInsidePages = window.location.pathname.includes('/Pages/');
         galleryContainer.innerHTML = data.gallery.images.map(img => {
-            const imgUrl = (img.url.startsWith('http') || !isInsidePages) ? img.url : `../${img.url}`;
+            const imgUrl = (img.url && (img.url.startsWith('http') || !isInsidePages)) ? img.url : (img.url ? `../${img.url}` : '');
+            const albumBtn = img.albumUrl ? `
+                <div style="margin-top: 1rem; text-align: center;">
+                    <a href="${img.albumUrl}" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.4rem 0.8rem;">
+                        <i class="fas fa-external-link-alt"></i> पूर्ण एल्बम हेर्नुहोस्
+                    </a>
+                </div>
+            ` : '';
+
             return `
                 <div class="card">
-                    <div class="card-img" style="background-image: url('${imgUrl}'); height: 250px;"></div>
+                    ${imgUrl ? `<div class="card-img" style="background-image: url('${imgUrl}'); height: 250px;"></div>` : ''}
                     <div class="card-body">
-                        <p style="text-align: center; font-weight: 600;">${img.caption}</p>
+                        <p style="text-align: center; font-weight: 600; margin-bottom: 0;">${img.caption}</p>
+                        ${albumBtn}
                     </div>
                 </div>
             `;

@@ -234,8 +234,32 @@ section {
     flex-direction: column;
 }
 
-.activity-gallery .card-img {
-    height: 250px;
+.membership-details h3 {
+    margin-top: 2rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 1rem;
+}
+
+.membership-details ul, .membership-details ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.membership-details li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+}
+
+.price-box p {
+    background: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--accent-color);
 }
 
 /* Buttons */
@@ -261,6 +285,18 @@ section {
 .btn-outline:hover {
     background: var(--accent-color);
     color: var(--white);
+}
+
+.btn-donate {
+    background: #f6ad55; /* Vibrant Orange */
+    color: var(--white);
+    box-shadow: 0 4px 14px 0 rgba(246, 173, 85, 0.39);
+}
+
+.btn-donate:hover {
+    background: #ed8936;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(237, 137, 54, 0.23);
 }
 
 /* Committee List */
