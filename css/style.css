@@ -431,7 +431,7 @@ footer {
 
 @media (max-width: 768px) {
     .logo-text h1 {
-        font-size: 1.3rem;
+        font-size: 0.95rem;
     }
     .logo-text p {
         font-size: 0.65rem;
