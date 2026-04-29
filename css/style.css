@@ -229,6 +229,15 @@ section {
     color: var(--primary-color);
 }
 
+.activity-gallery {
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-gallery .card-img {
+    height: 250px;
+}
+
 /* Buttons */
 .btn {
     display: inline-block;

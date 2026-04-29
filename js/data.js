@@ -1,5 +1,5 @@
 // Central Site Content
-const initialSiteData = {
+const siteData = {
     settings: {
         siteName: "पुरचौंडी रुजकोट विकास समाज-नेपाल",
         siteSubName: "",
@@ -25,24 +25,29 @@ const initialSiteData = {
         missionText: "शिक्षा, स्वास्थ्य, र आर्थिक सशक्तिकरण मार्फत स्थानीय जीवनस्तरमा सुधार ल्याउने।",
         customHTML: ""
     },
-    committee: [
-        { name: "राम बहादुर सिंह", post: "अध्यक्ष" },
-        { name: "सिता देवी चन्द", post: "उपाध्यक्ष" },
-        { name: "हरि प्रसाद जोशी", post: "महासचिव" },
-        { name: "लक्ष्मी भट्ट", post: "कोषाध्यक्ष" }
-    ],
+    committee: {
+        current: [
+            { name: "राम बहादुर सिंह", post: "अध्यक्ष" },
+            { name: "सिता देवी चन्द", post: "उपाध्यक्ष" },
+            { name: "हरि प्रसाद जोशी", post: "महासचिव" },
+            { name: "लक्ष्मी भट्ट", post: "कोषाध्यक्ष" }
+        ],
+        previous: [
+            { name: "पूर्व अध्यक्षको नाम", post: "पूर्व अध्यक्ष" }
+        ]
+    },
     activities: [
         {
             date: "२०८० चैत्र १०",
             title: "वार्षिक साधारण सभा सम्पन्न",
             description: "हाम्रो संस्थाको वार्षिक साधारण सभा सफलतापूर्वक सम्पन्न भयो।",
-            image: "images/activity-1.jpg"
+            images: ["images/activity-1.jpg", "images/activity-2.jpg"]
         },
         {
             date: "२०८० फाल्गुण १५",
             title: "स्वास्थ्य शिविर कार्यक्रम",
             description: "रुजकोट बासिन्दाका लागि निःशुल्क स्वास्थ्य शिविर सञ्चालन गरियो।",
-            image: "images/activity-2.jpg"
+            images: ["images/activity-2.jpg"]
         }
     ],
     programs: {
@@ -52,6 +57,7 @@ const initialSiteData = {
             { title: "शिक्षा सुधार कार्यक्रम", desc: "विद्यालय भवन मर्मत र शैक्षिक सामग्री वितरण।" },
             { title: "कृषि विकास योजना", desc: "स्थानीय किसानहरूलाई आधुनिक कृषि प्रविधिको तालिम।" }
         ],
+        images: ["images/activity-1.jpg", "images/activity-3.jpg"],
         customHTML: ""
     },
     membership: {
@@ -66,13 +72,15 @@ const initialSiteData = {
     scholarship: {
         title: "छात्रवृत्ति",
         content: "जेहेन्दार र विपन्न विद्यार्थीहरूलाई शैक्षिक सहयोग प्रदान गर्ने हाम्रो अभियान।",
+        images: ["images/activity-2.jpg"],
         customHTML: ""
     },
     gallery: {
         title: "फोटो ग्यालरी",
         images: [
             { url: "images/activity-1.jpg", caption: "वार्षिक साधारण सभा" },
-            { url: "images/activity-2.jpg", caption: "स्वास्थ्य शिविर" }
+            { url: "images/activity-2.jpg", caption: "स्वास्थ्य शिविर" },
+            { url: "images/activity-3.jpg", caption: "सामाजिक छलफल" }
         ],
         customHTML: ""
     },
@@ -101,6 +109,6 @@ const initialSiteData = {
     }
 };
 
-// Load data from localStorage if available (for preview), else use initialData
-const siteData = JSON.parse(localStorage.getItem('prds_site_data')) || initialSiteData;
+// Make data globally accessible
 window.siteData = siteData;
+

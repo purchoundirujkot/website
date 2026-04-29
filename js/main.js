@@ -46,8 +46,19 @@ function loadContent() {
 
     // Render Committee List
     const committeeContainer = document.getElementById('committee-render-list');
-    if (committeeContainer && data.committee) {
-        committeeContainer.innerHTML = data.committee.map(member => `
+    const committeePreviousContainer = document.getElementById('committee-previous-render-list');
+    
+    if (committeeContainer && data.committee && data.committee.current) {
+        committeeContainer.innerHTML = data.committee.current.map(member => `
+            <div class="committee-item">
+                <span class="committee-name">${member.name}</span>
+                <span class="committee-post">${member.post}</span>
+            </div>
+        `).join('');
+    }
+    
+    if (committeePreviousContainer && data.committee && data.committee.previous) {
+        committeePreviousContainer.innerHTML = data.committee.previous.map(member => `
             <div class="committee-item">
                 <span class="committee-name">${member.name}</span>
                 <span class="committee-post">${member.post}</span>
@@ -60,15 +71,50 @@ function loadContent() {
     if (activitiesContainer && data.activities) {
         const isInsidePages = window.location.pathname.includes('/Pages/');
         activitiesContainer.innerHTML = data.activities.map(act => {
-            const imgPath = isInsidePages ? `../${act.image}` : act.image;
+            const images = act.images || [act.image];
+            const imagesHtml = images.map(img => {
+                const imgPath = isInsidePages ? `../${img}` : img;
+                return `<div class="card-img" style="background-image: url('${imgPath}'); margin-bottom: 5px;"></div>`;
+            }).join('');
+
             return `
                 <div class="card">
-                    <div class="card-img" style="background-image: url('${imgPath}');"></div>
+                    <div class="activity-gallery">
+                        ${imagesHtml}
+                    </div>
                     <div class="card-body">
                         <p style="color: var(--text-muted); font-size: 0.9rem;">${act.date}</p>
                         <h3>${act.title}</h3>
                         <p>${act.description}</p>
                     </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Render Program Images
+    const programsImagesContainer = document.getElementById('programs-images-grid');
+    if (programsImagesContainer && data.programs && data.programs.images) {
+        const isInsidePages = window.location.pathname.includes('/Pages/');
+        programsImagesContainer.innerHTML = data.programs.images.map(img => {
+            const imgPath = isInsidePages ? `../${img}` : img;
+            return `
+                <div class="card">
+                    <div class="card-img" style="background-image: url('${imgPath}'); height: 250px;"></div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Render Scholarship Images
+    const scholarshipImagesContainer = document.getElementById('scholarship-images-grid');
+    if (scholarshipImagesContainer && data.scholarship && data.scholarship.images) {
+        const isInsidePages = window.location.pathname.includes('/Pages/');
+        scholarshipImagesContainer.innerHTML = data.scholarship.images.map(img => {
+            const imgPath = isInsidePages ? `../${img}` : img;
+            return `
+                <div class="card">
+                    <div class="card-img" style="background-image: url('${imgPath}'); height: 250px;"></div>
                 </div>
             `;
         }).join('');
