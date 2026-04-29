@@ -72,14 +72,23 @@ function loadContent() {
 
     const data = window.siteData;
 
-    // Set Random Hero Background on Home Page
+    // Hero Slideshow Logic
     const heroSection = document.querySelector('.hero');
-    if (heroSection && data.gallery && data.gallery.images) {
-        const randomImg = data.gallery.images[Math.floor(Math.random() * data.gallery.images.length)];
-        if (randomImg && randomImg.url) {
-            const isInsidePages = window.location.pathname.includes('/Pages/');
-            const imgPath = isInsidePages ? `../${randomImg.url}` : randomImg.url;
+    if (heroSection && data.index && data.index.heroImages) {
+        const images = data.index.heroImages;
+        let currentIndex = 0;
+        const isInsidePages = window.location.pathname.includes('/Pages/');
+
+        function updateHero() {
+            const img = images[currentIndex];
+            const imgPath = isInsidePages ? `../${img}` : img;
             heroSection.style.backgroundImage = `linear-gradient(rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.7)), url('${imgPath}')`;
+            currentIndex = (currentIndex + 1) % images.length;
+        }
+
+        updateHero();
+        if (images.length > 1) {
+            setInterval(updateHero, 5000);
         }
     }
 

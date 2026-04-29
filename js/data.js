@@ -10,6 +10,13 @@ const siteData = {
     index: {
         heroTitle: "पुरचौंडी रुजकोट विकास समाज-नेपालमा स्वागत छ",
         heroSubtitle: "रुजकोट क्षेत्रको चौतर्फी विकास र समृद्धिका लागि समर्पित एक गैर-नाफामुखी संस्था।",
+        heroImages: [
+            "images/rujkot1.JPG",
+            "images/rujkot2.JPG",
+            "images/rujkot3JPG.JPG",
+            "images/rujkot4.JPG",
+            "images/rujkot5.JPG"
+        ],
         aboutSummaryTitle: "हाम्रो बारेमा",
         aboutSummaryText: "पुरचौंडी रुजकोट विकास समाज-नेपाल (PRDS-Nepal) एक गैर-नाफामुखी, गैर-राजनीतिक र सामाजिक संस्था हो। यसको स्थापना रुजकोट क्षेत्रको चौतर्फी विकास गर्ने उद्देश्यले गरिएको हो। हामी शिक्षा, स्वास्थ्य, वातावरण, र सामाजिक-आर्थिक विकासका क्षेत्रमा काम गर्दछौं।",
         customHTML: ""
@@ -70,64 +77,75 @@ const siteData = {
     activities: [
         {
             date: "२०८१ बैशाख ८",
-            title: "चौथो बार्षिक उत्सव तथा छात्रवृति वितरण",
+            title: "चौथो बार्षिक उत्सव तथा जाडखोला परिवार स्मृति छात्रवृति वितरण",
             description: "शैक्षिक सत्र २०८०/०८१ को लागि यस संस्थावाट संन्चालित जाडखोला परिवार स्मृर्ति छात्रवृर्ति २० जना जेहन्दार छात्रछात्रा भाई वहिनी हरुलाई जनही रू ५ हजारका दरले २०८१/०१/०८ शनिवारका दिन वितरण गरियो।",
-            images: ["images/activity-1.jpg"],
+            images: [
+                "images/ANNUAL2081-1.jpg",
+                "images/ANNUAL2081-2.jpg",
+                "images/ANNUAL2081-3.JPG"
+            ],
             albumLink: "https://photos.google.com/share/AF1QipMmbSsdjwGqAN2oQP2SYPenjHFHzPEfn6vId2577CRYAsyDqVz83G5kyAG9nEGyFQ?key=Y0V6RlBrRHFnaWlKcHhmUjNrSGpndThBRHg1WUln"
         },
         {
             date: "२०८०",
             title: "पुस्तक बितरण कार्यक्रम",
             description: "श्री डिलेश्वरी उ. मा. बि. पुरचौंडी हाट-बैतडी, श्री महेन्द्र नमुना मा.बि. खलंङ्गा-दार्चुला, श्री मालीकार्जुन नि.मा.बि. दार्चुला, श्री नेपाल राष्ट्रिय मा.बिं पुरचौंडी-०८ बैतडी, श्री सिद्दनाथ मा. बि. बडैपुर-कन्चनपुर, श्री धर्मजनता मा. बि. स्टेशनपुर झलारी-कन्चनपुर का कक्षा ३ र ४ कक्षा का बिद्धार्थीहरुलाई पूर्व बुढानीलकण्ठ विध्यार्थीहरुको समाज (SEBS) उत्तर अमेरीका र ग्रेटर सेन्ट लुईस नेपाली चौतारी (GSTLNC) वाट प्राप्त उपयोगी पुस्तकहरु वितरण गरियो।",
-            images: ["images/activity-3.jpg"],
+            images: [
+                "images/PUSTAK1.JPG",
+                "images/PUSTAK2.JPG"
+            ],
             albumLink: "https://photos.google.com/share/AF1QipPH0uT3seWJT3YxxOQpZqff2tDd3Nts_waxJO0xKuY7ZyWQs_5ej4khvt64HG0_rw?key=MEYzc3Q0NVA2eWVqLVVJMWo1ZnlBN2doVGpCZ1pR"
         },
         {
             date: "२०८०",
             title: "कार्यालय उदघाटन तथा जेष्ठ नागरिक सम्मान",
             description: "संस्था को कार्यालय उदघाटन समारोह तथा बरिष्ठ नागरिक सम्मान कार्यक्रम सम्पन्न।",
-            images: ["images/activity-2.jpg"]
+            images: [
+                "images/KARYALAYA1.JPG",
+                "images/KARYALAYA2.JPG",
+                "images/KARYALAYA3.JPG"
+            ],
+            albumLink: "https://photos.google.com/share/AF1QipM4mXJ2FsZjkl1qv1o7syhmMaPJ8my8ApTIOv-BwbMABVT6OclCDIltG7RVOt5llQ?key=V182X01KQ0N3bXl0SGV0OFd6bG9LbU1OajZMRC13"
         },
         {
             date: "२०७९/८०",
             title: "रुजकोट सम्म बाटो निर्माण",
             description: "रुजकोट क्षेत्र सम्मको पहुँच सुधारका लागि बाटो निर्माण कार्य सम्पन्न गरियो।",
-            images: ["images/hero-bg.jpg"],
+            images: [
+                "images/BATO.JPG",
+                "images/BATO1.JPG",
+                "images/BATO2.JPG"
+            ],
             albumLink: "https://photos.google.com/share/AF1QipNS2ohtr-Ikv0UtA5gFpSOQzJ5uM4hsc1ckDuAP-Y_ZNT3SGqvOE91G3sXRBbNfsg?key=Z1R6TEhOT3hQX0Ixb3NDOGJPWGlCOXdzeEE4MGpB"
-        },
-        {
-            date: "",
-            title: "पुरचौंडी रुजकोट को झलक",
-            description: "",
-            images: ["images/activity-1.jpg"],
-            albumLink: "https://photos.google.com/share/AF1QipMGbtFOisdaXulHVPBy4ymvoBUhNKx4ZJjyH81YdZL8iPWGtfzkQLcM40U5cIpfzg?key=ZXYycWZuM243cGdHLUdiT3BfZDAwcjN0a2J6ZU1B"
-        },
-        {
-            date: "२०८१-१-८",
-            title: "जाडखोला परिवार स्मृति छात्रवृति वितरण",
-            description: "",
-            images: ["images/activity-2.jpg"],
-            albumLink: "https://photos.google.com/share/AF1QipMmbSsdjwGqAN2oQP2SYPenjHFHzPEfn6vId2577CRYAsyDqVz83G5kyAG9nEGyFQ?key=Y0V6RlBrRHFnaWlKcHhmUjNrSGpndThBRHg1WUln"
         },
         {
             date: "२०८२-१-६",
             title: "बार्षिक कार्यक्रम",
-            description: "",
-            images: ["images/activity-1.jpg"],
+            description: "संस्थाको बार्षिक कार्यक्रम उत्साहपूर्वक सम्पन्न।",
+            images: [
+                "images/ANNUAL2082-1.jpg",
+                "images/ANNUAL2082-2.jpg"
+            ],
             albumLink: "https://photos.google.com/album/AF1QipPh9IWULP8oslL82nSQZUWJPDtoJEmK1bD0RalZ"
         },
         {
             date: "२०८३-१-१८",
             title: "जाडखोला परिवार स्मृति छात्रवृति वितरण",
-            description: "",
-            images: ["images/activity-2.jpg"],
+            description: "जेहेन्दार विद्यार्थीहरूलाई जाडखोला परिवार स्मृति छात्रवृति वितरण कार्यक्रम।",
+            images: [
+                "images/JADKHOLA_SCHOLERSHIP_2083.jpg",
+                "images/JADKHOLA_SCHOLERSHIP_2083-2.jpg"
+            ],
             albumLink: "https://photos.google.com/album/AF1QipPDHP_MW93OMcCTL8oKjyohRA2yooPX3UORV1Qs"
         },
         {
             date: "२०८३-१-१८",
             title: "पुरचौंडी रुजकोट विकास समाज छात्रवृति",
-            description: "",
-            images: ["images/activity-3.jpg"],
+            description: "समाजद्वारा आयोजित छात्रवृति वितरण कार्यक्रम।",
+            images: [
+                "images/RUJKOT_SCHOLOERSHIP2083-1.jpg",
+                "images/RUJKOT_SCHOLOERSHIP2083-2.jpg"
+            ],
             albumLink: "https://photos.google.com/album/AF1QipPk7snbCS48qcAQHkajN1g8KB9IeaL3N0NIKhYf"
         }
     ],
