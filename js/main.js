@@ -77,7 +77,8 @@ function loadContent() {
     if (heroSection && data.index && data.index.heroImages) {
         const images = data.index.heroImages;
         let currentIndex = 0;
-        const isInsidePages = window.location.pathname.includes('/Pages/');
+        const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                              window.location.href.toLowerCase().includes('/pages/');
 
         function updateHero() {
             const img = images[currentIndex];
@@ -163,7 +164,8 @@ function loadContent() {
     // Render Activities List
     const activitiesContainer = document.getElementById('activities-render-grid');
     if (activitiesContainer && data.activities) {
-        const isInsidePages = window.location.pathname.includes('/Pages/');
+        const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                              window.location.href.toLowerCase().includes('/pages/');
         
         // Sort activities: most recent first
         const sortedActivities = [...data.activities].sort((a, b) => {
@@ -206,7 +208,8 @@ function loadContent() {
     // Render Program Images
     const programsImagesContainer = document.getElementById('programs-images-grid');
     if (programsImagesContainer && data.programs && data.programs.images) {
-        const isInsidePages = window.location.pathname.includes('/Pages/');
+        const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                              window.location.href.toLowerCase().includes('/pages/');
         programsImagesContainer.innerHTML = data.programs.images.map(img => {
             const imgPath = isInsidePages ? `../${img}` : img;
             return `
@@ -220,7 +223,8 @@ function loadContent() {
     // Render Scholarship Images
     const scholarshipImagesContainer = document.getElementById('scholarship-images-grid');
     if (scholarshipImagesContainer && data.scholarship && data.scholarship.images) {
-        const isInsidePages = window.location.pathname.includes('/Pages/');
+        const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                              window.location.href.toLowerCase().includes('/pages/');
         scholarshipImagesContainer.innerHTML = data.scholarship.images.map(img => {
             const imgPath = isInsidePages ? `../${img}` : img;
             return `
@@ -250,7 +254,8 @@ function loadContent() {
     // Render Gallery
     const galleryContainer = document.getElementById('gallery-render-grid');
     if (galleryContainer && data.gallery && data.gallery.images) {
-        const isInsidePages = window.location.pathname.includes('/Pages/');
+        const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
+                              window.location.href.toLowerCase().includes('/pages/');
         galleryContainer.innerHTML = data.gallery.images.map(img => {
             const imgUrl = (img.url && (img.url.startsWith('http') || !isInsidePages)) ? img.url : (img.url ? `../${img.url}` : '');
             const albumBtn = img.albumUrl ? `
