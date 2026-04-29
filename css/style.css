@@ -299,6 +299,30 @@ section {
     box-shadow: 0 6px 20px rgba(237, 137, 54, 0.23);
 }
 
+/* Objective List Styles */
+.objective-list {
+    margin-top: 1.5rem;
+    padding: 0;
+    list-style: none;
+}
+
+.objective-list li {
+    background: var(--white);
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--accent-color);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    transition: var(--transition);
+}
+
+.objective-list li:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-lg);
+}
+
 /* Committee List */
 .committee-list {
     max-width: 800px;
