@@ -227,9 +227,14 @@ const siteData = {
     contact: {
         title: "सम्पर्क",
         address: "बैतडी जिल्ला, पुरचौंडी नगरपालिका वडा नं. ८, रेसी",
-        phone: "+९७७-९८XXXXXXXX",
         email: "purchoundirujkot@gmail.com",
-        customHTML: "<p>Facebook: <a href='https://facebook.com/purchoundi.rujkot' target='_blank'>purchoundi.rujkot</a></p>"
+        customHTML: `
+            <div class="contact-links" style="margin-top: 2rem; font-size: 1.1rem;">
+                <p style="margin-bottom: 1.5rem;"><i class="fas fa-map-location-dot" style="color: #ea4335; margin-right: 1rem;"></i> <strong>Google Map:</strong> <a href="https://www.google.com/maps/search/JM3J%2B9C+Malladehi,+Nepal" target="_blank" style="color: var(--accent-color);">JM3J+9C Malladehi, Nepal</a></p>
+                <p style="margin-bottom: 1.5rem;"><i class="fab fa-facebook" style="color: #1877f2; margin-right: 1rem;"></i> <strong>Facebook:</strong> <a href="https://facebook.com/purchoundi.rujkot" target="_blank" style="color: var(--accent-color);">purchoundi.rujkot</a></p>
+                <p style="margin-bottom: 1.5rem;"><i class="fab fa-facebook-messenger" style="color: #0084ff; margin-right: 1rem;"></i> <strong>Messenger:</strong> <a href="https://m.me/purchoundi.rujkot" target="_blank" style="color: var(--accent-color);">सम्पर्क गर्न यहाँ क्लिक गर्नुहोस</a></p>
+            </div>
+        `
     },
     donations: {
         title: "चन्दा सहयोग",

@@ -63,33 +63,29 @@
     <!-- Contact Content -->
     <section>
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; gap: 4rem;">
-                <div style="flex: 1; min-width: 300px;">
-                    <h2 style="color: var(--primary-color); margin-bottom: 2rem;">सम्पर्क जानकारी</h2>
-                    <ul class="footer-links" style="color: var(--text-color); font-size: 1.1rem;">
-                        <li style="margin-bottom: 1.5rem;"><i class="fas fa-location-dot" style="color: var(--accent-color); margin-right: 1rem;"></i> पुरचौंडी, बैतडी, नेपाल</li>
-                        <li style="margin-bottom: 1.5rem;"><i class="fas fa-phone" style="color: var(--accent-color); margin-right: 1rem;"></i> +९७७-९८XXXXXXXX</li>
-                        <li style="margin-bottom: 1.5rem;"><i class="fas fa-envelope" style="color: var(--accent-color); margin-right: 1rem;"></i> info@purchoundirujkot.org.np</li>
-                    </ul>
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <div class="card" style="padding: 2rem;">
-                        <form>
-                            <div class="form-group" style="margin-bottom: 1.5rem;">
-                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">नाम</label>
-                                <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px;">
-                            </div>
-                            <div class="form-group" style="margin-bottom: 1.5rem;">
-                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">इमेल</label>
-                                <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px;">
-                            </div>
-                            <div class="form-group" style="margin-bottom: 1.5rem;">
-                                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">सन्देश</label>
-                                <textarea rows="4" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 8px;"></textarea>
-                            </div>
-                            <button type="button" class="btn btn-primary" style="width: 100%;">पठाउनुहोस्</button>
-                        </form>
+            <div style="max-width: 800px; margin: 0 auto; background: var(--white); padding: 3rem; border-radius: var(--radius); box-shadow: var(--shadow);">
+                <h2 style="color: var(--primary-color); margin-bottom: 2rem; text-align: center;" data-content="contact.title">सम्पर्क जानकारी</h2>
+                
+                <div style="font-size: 1.15rem; color: var(--text-color);">
+                    <div style="display: flex; align-items: start; margin-bottom: 2rem;">
+                        <i class="fas fa-location-dot" style="color: var(--accent-color); font-size: 1.5rem; margin-right: 1.5rem; margin-top: 0.3rem;"></i>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.5rem; color: var(--primary-color);">कार्यालय ठेगाना:</strong>
+                            <span data-content="contact.address">बैतडी जिल्ला, पुरचौंडी नगरपालिका वडा नं. ८, रेसी</span>
+                        </div>
                     </div>
+
+                    <div style="display: flex; align-items: start; margin-bottom: 2rem;">
+                        <i class="fas fa-envelope" style="color: var(--accent-color); font-size: 1.5rem; margin-right: 1.5rem; margin-top: 0.3rem;"></i>
+                        <div>
+                            <strong style="display: block; margin-bottom: 0.5rem; color: var(--primary-color);">इमेल:</strong>
+                            <a href="mailto:purchoundirujkot@gmail.com" data-content="contact.email" style="color: var(--accent-color);">purchoundirujkot@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-html="contact.customHTML" style="border-top: 1px solid #eee; margin-top: 2rem; padding-top: 1rem;">
+                    <!-- Social links and Google Map from data.js will appear here -->
                 </div>
             </div>
         </div>
@@ -115,9 +111,8 @@
                 <div class="footer-col">
                     <h4>सम्पर्क</h4>
                     <ul class="footer-links">
-                        <li><i class="fas fa-location-dot"></i> पुरचौंडी, बैतडी, नेपाल</li>
-                        <li><i class="fas fa-phone"></i> +९७७-९८XXXXXXXX</li>
-                        <li><i class="fas fa-envelope"></i> info@purchoundirujkot.org.np</li>
+                        <li><i class="fas fa-location-dot"></i> पुरचौंडी-८, रेसी, बैतडी</li>
+                        <li><i class="fas fa-envelope"></i> purchoundirujkot@gmail.com</li>
                     </ul>
                 </div>
             </div>
