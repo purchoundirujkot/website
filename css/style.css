@@ -381,8 +381,8 @@ footer {
     }
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+/* Mobile & Tablet Responsive */
+@media (max-width: 1150px) {
     .nav-links {
         display: none; /* Hide for now, will handle with JS */
     }
@@ -391,6 +391,21 @@ footer {
         display: block;
     }
     
+    .logo-text h1 {
+        font-size: 1.6rem;
+    }
+    .logo-text p {
+        font-size: 0.75rem;
+    }
+    .logo-container img {
+        height: 50px;
+    }
+    header .container {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
     .logo-text h1 {
         font-size: 1.3rem;
     }

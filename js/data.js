@@ -1,7 +1,7 @@
 // Central Site Content
 const siteData = {
     settings: {
-        siteName: "पुरचौंडी रुजकोट विकास समाज-नेपाल (PRDS-Nepal)",
+        siteName: "पुरचौंडी रुजकोट विकास समाज-नेपाल",
         siteSubName: "Baitadi, Nepal",
         footerText: "रुजकोट क्षेत्रको चौतर्फी विकासका लागि समर्पित एक सामाजिक संस्था।",
         copyright: "© {year} पुरचौंडी रुजकोट विकास समाज-नेपाल। सर्वाधिकार सुरक्षित।",
@@ -92,7 +92,43 @@ const siteData = {
             date: "२०७९/८०",
             title: "रुजकोट सम्म बाटो निर्माण",
             description: "रुजकोट क्षेत्र सम्मको पहुँच सुधारका लागि बाटो निर्माण कार्य सम्पन्न गरियो।",
-            images: ["images/hero-bg.jpg"]
+            images: ["images/hero-bg.jpg"],
+            albumLink: "https://photos.google.com/share/AF1QipNS2ohtr-Ikv0UtA5gFpSOQzJ5uM4hsc1ckDuAP-Y_ZNT3SGqvOE91G3sXRBbNfsg?key=Z1R6TEhOT3hQX0Ixb3NDOGJPWGlCOXdzeEE4MGpB"
+        },
+        {
+            date: "",
+            title: "पुरचौंडी रुजकोट को झलक",
+            description: "",
+            images: ["images/activity-1.jpg"],
+            albumLink: "https://photos.google.com/share/AF1QipMGbtFOisdaXulHVPBy4ymvoBUhNKx4ZJjyH81YdZL8iPWGtfzkQLcM40U5cIpfzg?key=ZXYycWZuM243cGdHLUdiT3BfZDAwcjN0a2J6ZU1B"
+        },
+        {
+            date: "२०८१-१-८",
+            title: "जाडखोला परिवार स्मृति छात्रवृति वितरण",
+            description: "",
+            images: ["images/activity-2.jpg"],
+            albumLink: "https://photos.google.com/share/AF1QipMmbSsdjwGqAN2oQP2SYPenjHFHzPEfn6vId2577CRYAsyDqVz83G5kyAG9nEGyFQ?key=Y0V6RlBrRHFnaWlKcHhmUjNrSGpndThBRHg1WUln"
+        },
+        {
+            date: "२०८२-१-६",
+            title: "बार्षिक कार्यक्रम",
+            description: "",
+            images: ["images/activity-1.jpg"],
+            albumLink: "https://photos.google.com/album/AF1QipPh9IWULP8oslL82nSQZUWJPDtoJEmK1bD0RalZ"
+        },
+        {
+            date: "२०८३-१-१८",
+            title: "जाडखोला परिवार स्मृति छात्रवृति वितरण",
+            description: "",
+            images: ["images/activity-2.jpg"],
+            albumLink: "https://photos.google.com/album/AF1QipPDHP_MW93OMcCTL8oKjyohRA2yooPX3UORV1Qs"
+        },
+        {
+            date: "२०८३-१-१८",
+            title: "पुरचौंडी रुजकोट विकास समाज छात्रवृति",
+            description: "",
+            images: ["images/activity-3.jpg"],
+            albumLink: "https://photos.google.com/album/AF1QipPk7snbCS48qcAQHkajN1g8KB9IeaL3N0NIKhYf"
         }
     ],
     programs: {
@@ -177,57 +213,6 @@ const siteData = {
         title: "छात्रवृत्ति",
         content: "जेहेन्दार र विपन्न विद्यार्थीहरूलाई शैक्षिक सहयोग प्रदान गर्ने हाम्रो अभियान। जाडखोला परिवार स्मृति छात्रवृति मार्फत हामीले विपन्न विद्यार्थीहरूलाई सहयोग गर्दै आएका छौं।",
         images: ["images/activity-2.jpg"],
-        customHTML: ""
-    },
-    gallery: {
-        title: "फोटो ग्यालरी",
-        images: [
-            { 
-                url: "images/activity-1.jpg", 
-                caption: "बार्षिक उत्सव", 
-                albumUrl: "https://photos.google.com/share/AF1QipMmbSsdjwGqAN2oQP2SYPenjHFHzPEfn6vId2577CRYAsyDqVz83G5kyAG9nEGyFQ?key=Y0V6RlBrRHFnaWlKcHhmUjNrSGpndThBRHg1WUln" 
-            },
-            { 
-                url: "images/activity-2.jpg", 
-                caption: "संस्था को कार्यालय उदघाटन समारोह तथा बरिष्ठ नागरिक सम्मान कार्यक्रम", 
-                albumUrl: "https://photos.google.com/share/AF1QipM4mXJ2FsZjkl1qv1o7syhmMaPJ8my8ApTIOv-BwbMABVT6OclCDIltG7RVOt5llQ?key=V182X01KQ0N3bXl0SGV0OFd6bG9LbU1OajZMRC13" 
-            },
-            { 
-                url: "images/activity-3.jpg", 
-                caption: "पुस्तक बितरण", 
-                albumUrl: "https://photos.google.com/share/AF1QipPH0uT3seWJT3YxxOQpZqff2tDd3Nts_waxJO0xKuY7ZyWQs_5ej4khvt64HG0_rw?key=MEYzc3Q0NVA2eWVqLVVJMWo1ZnlBN2doVGpCZ1pR" 
-            },
-            { 
-                url: "images/hero-bg.jpg", 
-                caption: "रुजकोट सम्म बाटो निर्माण", 
-                albumUrl: "https://photos.google.com/share/AF1QipNS2ohtr-Ikv0UtA5gFpSOQzJ5uM4hsc1ckDuAP-Y_ZNT3SGqvOE91G3sXRBbNfsg?key=Z1R6TEhOT3hQX0Ixb3NDOGJPWGlCOXdzeEE4MGpB" 
-            },
-            { 
-                url: "images/activity-1.jpg", 
-                caption: "पुरचौंडी रुजकोट को झलक", 
-                albumUrl: "https://photos.google.com/share/AF1QipMGbtFOisdaXulHVPBy4ymvoBUhNKx4ZJjyH81YdZL8iPWGtfzkQLcM40U5cIpfzg?key=ZXYycWZuM243cGdHLUdiT3BfZDAwcjN0a2J6ZU1B" 
-            },
-            { 
-                url: "images/activity-2.jpg", 
-                caption: "जाडखोला परिवार स्मृति छात्रवृति वितरण २०८१-१-८", 
-                albumUrl: "https://photos.google.com/share/AF1QipMmbSsdjwGqAN2oQP2SYPenjHFHzPEfn6vId2577CRYAsyDqVz83G5kyAG9nEGyFQ?key=Y0V6RlBrRHFnaWlKcHhmUjNrSGpndThBRHg1WUln" 
-            },
-            { 
-                url: "images/activity-1.jpg", 
-                caption: "बार्षिक कार्यक्रम २०८२-१-६", 
-                albumUrl: "https://photos.google.com/album/AF1QipPh9IWULP8oslL82nSQZUWJPDtoJEmK1bD0RalZ" 
-            },
-            { 
-                url: "images/activity-2.jpg", 
-                caption: "जाडखोला परिवार स्मृति छात्रवृति वितरण २०८३-१-१८", 
-                albumUrl: "https://photos.google.com/album/AF1QipPDHP_MW93OMcCTL8oKjyohRA2yooPX3UORV1Qs" 
-            },
-            { 
-                url: "images/activity-3.jpg", 
-                caption: "पुरचौंडी रुजकोट विकास समाज छात्रवृति २०८३-१-१८", 
-                albumUrl: "https://photos.google.com/album/AF1QipPk7snbCS48qcAQHkajN1g8KB9IeaL3N0NIKhYf" 
-            }
-        ],
         customHTML: ""
     },
     reports: {
