@@ -184,9 +184,6 @@ const siteData = {
                     <li>निश्वार्थ संस्थामा रहि समाजसेवा गर्ने प्रतिबद्धता</li>
                     <li>सदस्यता शुल्क संस्थाको खातामा डिपोजिट गरी भौचर को फोटो</li>
                 </ul>
-                <div style='text-align: center; margin: 2rem 0;'>
-                    <a href='https://m.me/purchoundi.rujkot' target='_blank' class='btn btn-primary'>मेसेन्जर मा सम्पर्क गर्न को लागी यहाँ क्लिक गर्नुहोस</a>
-                </div>
 
                 <h3>५. सदस्यताको समाप्ति:</h3>
                 <p>देहायको अवस्थामा कुनै पनि व्यक्ति संस्थाको सदस्यतामा बहाल रहनेछैन:</p>
@@ -232,7 +229,11 @@ const siteData = {
             <div class="contact-links" style="margin-top: 2rem; font-size: 1.1rem;">
                 <p style="margin-bottom: 1.5rem;"><i class="fas fa-map-location-dot" style="color: #ea4335; margin-right: 1rem;"></i> <strong>Google Map:</strong> <a href="https://www.google.com/maps/search/JM3J%2B9C+Malladehi,+Nepal" target="_blank" style="color: var(--accent-color);">JM3J+9C Malladehi, Nepal</a></p>
                 <p style="margin-bottom: 1.5rem;"><i class="fab fa-facebook" style="color: #1877f2; margin-right: 1rem;"></i> <strong>Facebook:</strong> <a href="https://facebook.com/purchoundi.rujkot" target="_blank" style="color: var(--accent-color);">purchoundi.rujkot</a></p>
-                <p style="margin-bottom: 1.5rem;"><i class="fab fa-facebook-messenger" style="color: #0084ff; margin-right: 1rem;"></i> <strong>Messenger:</strong> <a href="https://m.me/purchoundi.rujkot" target="_blank" style="color: var(--accent-color);">सम्पर्क गर्न यहाँ क्लिक गर्नुहोस</a></p>
+                <div style="text-align: center; margin-top: 2.5rem;">
+                    <a href="https://m.me/purchoundi.rujkot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2rem; font-size: 1.1rem;">
+                        <i class="fab fa-facebook-messenger" style="margin-right: 10px;"></i> मेसेन्जर मा सम्पर्क गर्न को लागी यहाँ क्लिक गर्नुहोस
+                    </a>
+                </div>
             </div>
         `
     },
