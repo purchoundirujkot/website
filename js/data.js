@@ -93,6 +93,17 @@ const siteData = {
         ]
     },
     activities: [
+         {
+            date: "२०८३ बैशाख १८",
+            title: "छैटौ बार्षिक उत्सव तथा छात्रवृति वितरण",
+            description: "मिति २०८३/०१/१८ गते, यस संस्थाको छैटौ वार्षिक उत्सव तथा छात्रवृर्ति वितरण कार्यक्रम भव्यताका साथ सम्पन्न गरियो।",
+            images: [
+                "images/6th_annual1.jpg",
+                "images/6th_annual2.jpg",
+                "images/6th_annual4.JPG"
+            ],
+            albumLink: "https://photos.google.com/album/AF1QipPK0zOtjjcrqZsLvMGwamWPh1m80qLrr8y8rrUe"
+        },
         {
             date: "२०८१ बैशाख ८",
             title: "चौथो बार्षिक उत्सव तथा जाडखोला परिवार स्मृति छात्रवृति वितरण",
