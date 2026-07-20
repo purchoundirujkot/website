@@ -93,6 +93,26 @@ const siteData = {
         ]
     },
     activities: [
+    {
+        date: "२०८३ असार",
+        title: "बाँसका बिरुवा वितरण तथा रोपण कार्यक्रम",
+        description: "पुरचौडी वातावरण संरक्षण अभियान अन्तर्गत बाँसका बिरुवाहरू उत्पादन, वितरण तथा रोपण कार्यक्रम भव्यताका साथ सम्पन्न गरियो।",
+        images: [
+            "images/bamboo2.jpeg",
+            "images/bamboo1.jpeg"
+        ],
+        albumLink: "https://photos.app.goo.gl/AC99cqR1eEfURYt97"
+    },
+    {
+        date: "२०८३ असार",
+        title: "विद्यार्थीहरूका लागि उत्प्रेरणात्मक तथा सीपमूलक तालिम",
+        description: "माध्यमिक विद्यालय स्तरका विद्यार्थीहरूको मनोबल उच्च बनाउन तथा व्यावहारिक ज्ञान प्रदान गर्न उत्प्रेरणात्मक सीप तालिम कार्यक्रम सम्पन्न गरियो।",
+        images: [
+            "images/motivation1.jpeg",
+            "images/motivation2.jpeg"
+        ],
+        albumLink: "https://photos.app.goo.gl/uH5jx1nzs5a76fTU8"
+    },
          {
             date: "२०८३ बैशाख १८",
             title: "छैटौ बार्षिक उत्सव तथा छात्रवृति वितरण",
