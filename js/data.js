@@ -278,17 +278,17 @@ const siteData = {
         images: ["images/activity-2.jpg"],
         customHTML: ""
     },
-    reports: {
-        title: "प्रकाशन एवं रिपोर्टहरू",
-        list: [
-            { name: "अडिट रिपोर्ट २०७७/०७८", url: "https://drive.google.com/file/d/1tmHIxFdenx2EPOOfScHau0VL-8815P_e/view" },
-            { name: "अडिट रिपोर्ट २०७८/०७९", url: "https://drive.google.com/file/d/1MU8fIJQGRSlW8HuSCFoT4870ZMf1m4oc/view" },
-            { name: "अडिट रिपोर्ट २०७९/२०८०", url: "https://drive.google.com/file/d/1U91YqA7b0jnN76zszBz4fjycwyXLGzEv/view" },
-            { name: "अडिट रिपोर्ट २०८०/२०८१", url: "https://drive.google.com/file/d/1efHwZJeDLVRz_b7yR6LYd1dHGuAQHlRZ/view?usp=drive_link" },
-            { name: "अडिट रिपोर्ट २०८१/२०८२", url: "https://drive.google.com/file/d/1f2d2blXe1Sd0KJoyi7XeQ-9DKuyTGV2y/view?usp=sharing" }
-        ],
-        customHTML: ""
-    },
+ reports: {
+    title: "प्रकाशन एवं रिपोर्टहरू",
+    list: [
+        { name: "अडिट रिपोर्ट २०७७/०७८", url: "https://drive.google.com/file/d/1tmHIxFdenx2EPOOfScHau0VL-8815P_e/view" },
+        { name: "अडिट रिपोर्ट २०७८/०७९", url: "https://drive.google.com/file/d/1MU8fIJQGRSlW8HuSCFoT4870ZMf1m4oc/view" },
+        { name: "अडिट रिपोर्ट २०७९/२०८०", url: "https://drive.google.com/file/d/1U91YqA7b0jnN76zszBz4fjycwyXLGzEv/view" },
+        { name: "अडिट रिपोर्ट २०८०/२०८१", url: "https://drive.google.com/file/d/1efHwZJeDLVRz_b7yR6LYd1dHGuAQHlRZ/view?usp=drive_link" },
+        { name: "अडिट रिपोर्ट २०८१/२०८२", url: "https://drive.google.com/file/d/1f2d2blXe1Sd0KJoyi7XeQ-9DKuyTGV2y/view?usp=sharing" }
+    ],
+    customHTML: ""
+},
     contact: {
         title: "सम्पर्क",
         address: "बैतडी जिल्ला, पुरचौंडी नगरपालिका वडा नं. ८, रेसी",
