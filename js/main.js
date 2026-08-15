@@ -77,20 +77,66 @@ function loadContent() {
     if (heroImageSlider && window.siteData.index && window.siteData.index.heroImages) {
         const images = window.siteData.index.heroImages;
         let currentIndex = 0;
+        let slideInterval = null;
         const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
                               window.location.href.toLowerCase().includes('/pages/');
 
-        function updateHero() {
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = images.length - 1;
+            } else if (index >= images.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+
             const img = images[currentIndex];
             const imgPath = isInsidePages ? `../${img}` : img;
             heroImageSlider.style.backgroundImage = `url('${imgPath}')`;
-            currentIndex = (currentIndex + 1) % images.length;
         }
 
-        updateHero();
-        if (images.length > 1) {
-            setInterval(updateHero, 5000);
+        function nextSlide() {
+            showSlide(currentIndex + 1);
         }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function startAutoplay() {
+            if (images.length > 1) {
+                stopAutoplay();
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+        }
+
+        function stopAutoplay() {
+            if (slideInterval) {
+                clearInterval(slideInterval);
+            }
+        }
+
+        // Event listeners for arrows
+        const prevBtn = document.getElementById('prevHeroBtn');
+        const nextBtn = document.getElementById('nextHeroBtn');
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                startAutoplay();
+            });
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                startAutoplay();
+            });
+        }
+
+
+        // Initialize first slide and start autoplay
+        showSlide(0);
+        startAutoplay();
     }
 
     // Fill simple text elements
