@@ -73,9 +73,9 @@ function loadContent() {
     const data = window.siteData;
 
     // Hero Slideshow Logic
-    const heroSection = document.querySelector('.hero');
-    if (heroSection && data.index && data.index.heroImages) {
-        const images = data.index.heroImages;
+    const heroImageSlider = document.querySelector('.hero-image-slider');
+    if (heroImageSlider && window.siteData.index && window.siteData.index.heroImages) {
+        const images = window.siteData.index.heroImages;
         let currentIndex = 0;
         const isInsidePages = window.location.pathname.toLowerCase().includes('/pages/') || 
                               window.location.href.toLowerCase().includes('/pages/');
@@ -83,7 +83,7 @@ function loadContent() {
         function updateHero() {
             const img = images[currentIndex];
             const imgPath = isInsidePages ? `../${img}` : img;
-            heroSection.style.backgroundImage = `linear-gradient(rgba(26, 54, 93, 0.7), rgba(26, 54, 93, 0.7)), url('${imgPath}')`;
+            heroImageSlider.style.backgroundImage = `url('${imgPath}')`;
             currentIndex = (currentIndex + 1) % images.length;
         }
 
